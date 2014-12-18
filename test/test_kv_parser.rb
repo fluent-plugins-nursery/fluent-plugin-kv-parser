@@ -33,6 +33,15 @@ module ParserTest
       }
     end
 
+    def test_with_custom_time_key
+      parser = Fluent::TextParser::KVParser.new
+      parser.configure("time_key" => "my_time", "types" => "my_time:time")
+      parser.parse("k1=foo my_time=1970-01-01T01:00:00") {|time, v|
+        assert_equal(3600, time)
+        assert_equal("foo", v["k1"])
+      }
+    end
+
     def test_custom_delimiter
       parser = Fluent::TextParser::KVParser.new
       parser.configure("kv_delimiter" => "|")
