@@ -1,5 +1,7 @@
 # Key-Value Pairs Parser Plugin for [Fluentd](https://github.com/fluent/fluentd)
 
+<img src="https://travis-ci.org/kiyoto/fluent-plugin-kv-parser.svg?branch=master"/>
+
 ## Overview
 
 This is a parser plugin for Fluentd. Learn more about parser plugins [here](https://docs.fluentd.org/articles/parser-plugin-overview).
