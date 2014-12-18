@@ -26,7 +26,7 @@ module ParserTest
 
     def test_with_time
       parser = Fluent::TextParser::KVParser.new
-      parser.configure("types" => "time:time:%Y-%m-%dT%H:%M:%S")
+      parser.configure("types" => "time:time")
       parser.parse("k1=foo time=1970-01-01T01:00:00") {|time, v|
         assert_equal(3600, time)
         assert_equal("foo", v["k1"])
