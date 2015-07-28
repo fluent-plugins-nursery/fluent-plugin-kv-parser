@@ -19,7 +19,9 @@ module Fluent
         record = {}
         text.split(@kv_delimiter).each do |kv|
           k, v = kv.split(@kv_char, 2)
+          unless  v.nil? || v == ""
           record[k] = v
+          end
         end
 
         convert_field_type!(record) if @type_converters
