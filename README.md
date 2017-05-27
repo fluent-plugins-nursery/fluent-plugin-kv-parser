@@ -66,10 +66,10 @@ gives
 
 ## Parameters
 
-* **kv_delimiter**: The delimiter for key-value pairs. By default, it is the regexp `/\t\s/+` (one or more whitespace/tabs). If the value starts and ends with the character `'/'`, the separator is interpreted to be a regexp. Else, it is interpreted to be a string. Hence,
+* **kv_delimiter**: The delimiter for key-value pairs. By default `\t\s` (one or more whitespace/tabs).
     
-    - `kv_delimiter /a+/` splits on one or more "a"s
-    - `kv_delimiter a` splits on a single "a"
+    - `kv_delimiter a` splits on one or more "a"s
+    - `kv_delimiter ab` splits on one or more "a"s or "b"s
 
 * **kv_char**: The string to split the key from the value. By default, it is "=".
 * **time_key**: The time key field among the key-value pairs to be used as the time for the event. If missing or unparsable, the current time is used.

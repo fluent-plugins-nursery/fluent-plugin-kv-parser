@@ -4,7 +4,7 @@ module Fluent
       include Configurable
       include TypeConverter
 
-      config_param :kv_delimiter, :string, :default => '/[\t\s]+/'
+      config_param :kv_delimiter, :string, :default => '\t\s'
       config_param :kv_char, :string, :default => '='
       config_param :time_key, :string, :default => 'time'
 
@@ -13,12 +13,17 @@ module Fluent
         if @kv_delimiter[0] == '/' and @kv_delimiter[-1] == '/'
           @kv_delimiter = Regexp.new(@kv_delimiter[1..-2])
         end
+
+        @kv_regex_str = '("(?:(?:\\\.|[^"])*)"|(?:[^' + @kv_delimiter + ']*))\s*' + @kv_char + '\s*("(?:(?:\\\.|[^"])*)"|(?:[^' + @kv_delimiter + ']*))'
+        @kv_regex = Regexp.new(@kv_regex_str)
       end
 
       def parse(text)
         record = {}
-        text.split(@kv_delimiter).each do |kv|
-          k, v = kv.split(@kv_char, 2)
+
+        text.scan(@kv_regex) do | m |
+          k = (m[0][0] == '"' and m[0][-1] == '"') ? m[0][1..-2] : m[0]
+          v = (m[1][0] == '"' and m[1][-1] == '"') ? m[1][1..-2] : m[1]
           record[k] = v
         end
 
