@@ -33,16 +33,16 @@ module ParserTest
 
     def test_with_time
       d = create_driver({"types" => "time:time"})
-      d.instance.parse("k1=foo time=1970-01-01T01:00:00") {|time, v|
-        assert_equal(-28800, time)
+      d.instance.parse("k1=foo time=1970-01-01T01:00:00Z") {|time, v|
+        assert_equal(3600, time)
         assert_equal("foo", v["k1"])
       }
     end
 
     def test_with_custom_time_key
       d = create_driver({"time_key" => "my_time", "types" => "my_time:time"})
-      d.instance.parse("k1=foo my_time=1970-01-01T01:00:00") {|time, v|
-        assert_equal(-28800, time)
+      d.instance.parse("k1=foo my_time=1970-01-01T01:00:00Z") {|time, v|
+        assert_equal(3600, time)
         assert_equal("foo", v["k1"])
       }
     end
