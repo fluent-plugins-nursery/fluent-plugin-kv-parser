@@ -2,9 +2,6 @@ require 'fluent/test'
 require 'fluent/parser'
 require 'fluent/plugin/parser_kv'
 
-module ParserTest
-  include Fluent
-
   class KVParserTest < ::Test::Unit::TestCase
     include ParserTest
 
@@ -61,6 +58,4 @@ module ParserTest
     def test_types_param
       parser = Fluent::TextParser::KVParser.new
     end
-
   end
-end
