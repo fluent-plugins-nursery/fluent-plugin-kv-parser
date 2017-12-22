@@ -3,7 +3,7 @@ require "fluent/plugin/parser"
 module Fluent
   module Plugin
     class KVParser < Fluent::Plugin::Parser
-      Fluent::Plugin.register_plugin("kv", self)
+      Fluent::Plugin.register_parser("kv", self)
 
       config_param :kv_delimiter, :string, default: '/[\t\s]+/'
       config_param :kv_char, :string, default: '='
