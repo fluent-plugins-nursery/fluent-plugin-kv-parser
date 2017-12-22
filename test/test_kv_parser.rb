@@ -1,8 +1,11 @@
 require 'fluent/test'
 require 'fluent/test/driver/parser'
+require 'fluent/test/helpers'
 require 'fluent/plugin/parser_kv'
 
 class KVParserTest < ::Test::Unit::TestCase
+  include Fluent::Test::Helpers
+
   def setup
     Fluent::Test.setup
   end
@@ -32,8 +35,8 @@ class KVParserTest < ::Test::Unit::TestCase
 
   test "parse with time" do
     d = create_driver("types" => "time:time")
-    d.instance.parse("k1=foo time=1970-01-01T01:00:00") do |time, reocrd|
-      assert_equal(3600, time)
+    d.instance.parse("k1=foo time=1970-01-01T01:00:00") do |time, record|
+      assert_equal(event_time("1970-01-01T01:00:0"), time)
       assert_equal({ "k1" => "foo" }, record)
     end
   end
@@ -41,7 +44,7 @@ class KVParserTest < ::Test::Unit::TestCase
   test "parse with custom time_key" do
     d = create_driver("time_key" => "my_time", "types" => "my_time:time")
     d.instance.parse("k1=foo my_time=1970-01-01T01:00:00") do |time, record|
-      assert_equal(3600, time)
+      assert_equal(event_time("1970-01-01T01:00:0"), time)
       assert_equal({ "k1" => "foo" }, record)
     end
   end
