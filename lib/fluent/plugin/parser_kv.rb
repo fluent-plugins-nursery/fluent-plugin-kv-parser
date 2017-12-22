@@ -1,3 +1,5 @@
+require "fluent/plugin/parser"
+
 module Fluent
   module Plugin
     class KVParser < Fluent::Plugin::Parser
