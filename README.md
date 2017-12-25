@@ -20,6 +20,13 @@ It is parsed as
 
 with the event's time being `2013-01-01T12:34:00`
 
+## Requirements
+
+| fluent-plugin-kv-parser | fluentd    | ruby   |
+|-------------------------|------------|--------|
+| >= 1.0.0                | >= v0.14.0 | >= 2.1 |
+| <  1.0.0                | >= v0.12.0 | >= 1.9 |
+
 ## How to Install and Use
 
 For Fluentd,
