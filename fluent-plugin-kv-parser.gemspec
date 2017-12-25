@@ -18,5 +18,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "rake", '> 10.1'
+  spec.add_development_dependency "test-unit", "> 3.0"
   spec.add_runtime_dependency "fluentd", '> 0.10.0', '< 0.14.0'
 end
