@@ -3,7 +3,6 @@ require 'fluent/parser'
 require 'fluent/plugin/parser_kv'
 
 class KVParserTest < ::Test::Unit::TestCase
-  include ParserTest
 
   def test_basic
     parser = Fluent::TextParser::KVParser.new
