@@ -2,9 +2,6 @@ require 'fluent/test'
 require 'fluent/parser'
 require 'fluent/plugin/parser_kv'
 
-module ParserTest
-  include Fluent
-
   class KVParserTest < ::Test::Unit::TestCase
     include ParserTest
 
@@ -63,4 +60,3 @@ module ParserTest
     end
 
   end
-end
