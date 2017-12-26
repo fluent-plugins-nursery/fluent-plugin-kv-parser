@@ -1,6 +1,6 @@
 # Key-Value Pairs Parser Plugin for [Fluentd](https://github.com/fluent/fluentd)
 
-<img src="https://travis-ci.org/kiyoto/fluent-plugin-kv-parser.svg?branch=master"/>
+[![Build Status](https://travis-ci.org/fluent-plugins-nursery/fluent-plugin-kv-parser.svg?branch=master)](https://travis-ci.org/fluent-plugins-nursery/fluent-plugin-kv-parser)
 
 ## Overview
 
