@@ -1,14 +1,16 @@
+require "fluent/plugin/parser"
+
 module Fluent
-  class TextParser
-    class KVParser < Parser
-      include Configurable
-      include TypeConverter
+  module Plugin
+    class KVParser < Fluent::Plugin::Parser
+      Fluent::Plugin.register_parser("kv", self)
 
-      config_param :kv_delimiter, :string, :default => '/[\t\s]+/'
-      config_param :kv_char, :string, :default => '='
-      config_param :time_key, :string, :default => 'time'
+      config_param :kv_delimiter, :string, default: '/\s+/'
+      config_param :kv_char, :string, default: '='
 
-      def configure(conf={})
+      config_set_default :time_key, "time"
+
+      def configure(conf)
         super
         if @kv_delimiter[0] == '/' and @kv_delimiter[-1] == '/'
           @kv_delimiter = Regexp.new(@kv_delimiter[1..-2])
@@ -18,34 +20,15 @@ module Fluent
       def parse(text)
         record = {}
         text.split(@kv_delimiter).each do |kv|
-          k, v = kv.split(@kv_char, 2)
-          record[k] = v
+          key, value = kv.split(@kv_char, 2)
+          record[key] = value
         end
 
-        convert_field_type!(record) if @type_converters
-        time = record.delete(@time_key)
-        if time.nil?
-          time = Engine.now
-        elsif time.respond_to?(:to_i)
-          time = time.to_i
-        else
-          raise RuntimeError, "The #{@time_key}=#{time} is a bad time field"
-        end
+        time = parse_time(record)
+        time, record = convert_values(time, record)
 
         yield time, record
       end
-
-      private
-
-      def convert_field_type!(record)
-        @type_converters.each_key { |key|
-          if value = record[key]
-            record[key] = convert_type(key, value)
-          end
-        }
-      end
-
     end
-    register_template('kv', Proc.new { KVParser.new })
   end
 end

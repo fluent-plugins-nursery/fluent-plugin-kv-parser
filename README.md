@@ -1,6 +1,6 @@
 # Key-Value Pairs Parser Plugin for [Fluentd](https://github.com/fluent/fluentd)
 
-<img src="https://travis-ci.org/kiyoto/fluent-plugin-kv-parser.svg?branch=master"/>
+[![Build Status](https://travis-ci.org/fluent-plugins-nursery/fluent-plugin-kv-parser.svg?branch=master)](https://travis-ci.org/fluent-plugins-nursery/fluent-plugin-kv-parser)
 
 ## Overview
 
@@ -19,6 +19,13 @@ It is parsed as
 ```
 
 with the event's time being `2013-01-01T12:34:00`
+
+## Requirements
+
+| fluent-plugin-kv-parser | fluentd    | ruby   |
+|-------------------------|------------|--------|
+| >= 1.0.0                | >= v0.14.0 | >= 2.1 |
+| <  1.0.0                | >= v0.12.0 | >= 1.9 |
 
 ## How to Install and Use
 
@@ -40,15 +47,17 @@ For example, using `in_tcp` with the following configuration:
 
 ```aconf
 <source>
-  type tcp
+  @type tcp
   port 24225
   tag kv_log
-  format kv
-  time_key my_time
-  types k1:integer,my_time:time
+  <parse>
+    @type kv
+    time_key my_time
+    types k1:integer,my_time:time
+  </parse>
 </source>
 <match kv_log>
-  type stdout
+  @type stdout
 </match>
 ```
 
