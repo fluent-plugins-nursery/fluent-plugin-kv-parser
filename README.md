@@ -47,15 +47,17 @@ For example, using `in_tcp` with the following configuration:
 
 ```aconf
 <source>
-  type tcp
+  @type tcp
   port 24225
   tag kv_log
-  format kv
-  time_key my_time
-  types k1:integer,my_time:time
+  <parse>
+    @type kv
+    time_key my_time
+    types k1:integer,my_time:time
+  </parse>
 </source>
 <match kv_log>
-  type stdout
+  @type stdout
 </match>
 ```
 
