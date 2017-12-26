@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["kiyoto"]
   spec.email         = ["kiyoto@treasure-data.com"]
   spec.summary       = %q{Fluentd parser plugin to parse key value pairs}
-  spec.homepage      = "https://github.com/kiyoto/fluent-plugin-kv-parser"
+  spec.homepage      = "https://github.com/fluent-plugins-nursery/fluent-plugin-kv-parser"
   spec.license       = "Apache-2.0"
 
   spec.files         = `git ls-files`.split($/)
