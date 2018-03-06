@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/fluent-plugins-nursery/fluent-plugin-kv-parser.svg?branch=master)](https://travis-ci.org/fluent-plugins-nursery/fluent-plugin-kv-parser)
 
+Fluentd built-in [parser_ltsv](https://docs.fluentd.org/v1.0/articles/parser_ltsv) has been provided all feature of this plugin since Fluentd v1.1.0.
+
 ## Overview
 
 This is a parser plugin for Fluentd. Learn more about parser plugins [here](https://docs.fluentd.org/articles/parser-plugin-overview).
