@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/fluent-plugins-nursery/fluent-plugin-kv-parser.svg?branch=master)](https://travis-ci.org/fluent-plugins-nursery/fluent-plugin-kv-parser)
 
-Fluentd built-in [parser_ltsv](https://docs.fluentd.org/v1.0/articles/parser_ltsv) has been provided all feature of this plugin since Fluentd v1.1.0.
+Fluentd built-in [parser_ltsv](https://docs.fluentd.org/parser/ltsv) has been provided all feature of this plugin since Fluentd v1.1.0.
 
 ## Overview
 
@@ -43,7 +43,7 @@ For [Treasure Agent](https://docs.treasuredata.com/articles/td-agent),
 /usr/sbin/td-agent-gem install fluent-plugin-kv-parser
 ```
 
-Then, for parser-plugin enabled input plugins (including [in_tail](https://docs.fluentd.org/articles/in_tail), [in_tcp](https://docs.fluentd.org/articles/in_tcp), [in_udp](https://docs.fluentd.org/articles/in_udp) and [in_syslog](https://docs.fluentd.org/articles/syslog)), you can just write `format kv`
+Then, for parser-plugin enabled input plugins (including [in_tail](https://docs.fluentd.org/input/tail), [in_tcp](https://docs.fluentd.org/input/tcp), [in_udp](https://docs.fluentd.org/input/udp) and [in_syslog](https://docs.fluentd.org/input/syslog), you can just write `format kv`
 
 For example, using `in_tcp` with the following configuration:
 
@@ -84,7 +84,7 @@ gives
 
 * **kv_char**: The string to split the key from the value. By default, it is "=".
 * **time_key**: The time key field among the key-value pairs to be used as the time for the event. If missing or unparsable, the current time is used.
-* **types**: The parameter to convert the values of key-value pairs. The syntax is `<key_name>:<type_name>`. For example, to convert the key "k1" into integer, write `types k1:integer`. For the `time` type, one can write `<key_name>:time:<time_format>` to convert the string into a time object. For example, to convert the string "my_time=12/31/2014 12:00:00", use `my_time:time:%m/%d/%Y %H:%M:%S`. This parameter is same as the one used for [in_tail](https://docs.fluentd.org/articles/in_tail) and others (see under the "types" section over there).
+* **types**: The parameter to convert the values of key-value pairs. The syntax is `<key_name>:<type_name>`. For example, to convert the key "k1" into integer, write `types k1:integer`. For the `time` type, one can write `<key_name>:time:<time_format>` to convert the string into a time object. For example, to convert the string "my_time=12/31/2014 12:00:00", use `my_time:time:%m/%d/%Y %H:%M:%S`. This parameter is same as the one used for [in_tail](https://docs.fluentd.org/input/tail) and others (see under the "types" section over there).
 
 ## License
 
