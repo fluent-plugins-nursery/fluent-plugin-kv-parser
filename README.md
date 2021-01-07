@@ -1,6 +1,8 @@
 # Key-Value Pairs Parser Plugin for [Fluentd](https://github.com/fluent/fluentd)
 
-[![Build Status](https://travis-ci.org/fluent-plugins-nursery/fluent-plugin-kv-parser.svg?branch=master)](https://travis-ci.org/fluent-plugins-nursery/fluent-plugin-kv-parser)
+![Testing on Ubuntu](https://github.com/fluent-plugins-nursery/fluent-plugin-kv-parser/workflows/Testing%20on%20Ubuntu/badge.svg)
+![Testing on macOS](https://github.com/fluent-plugins-nursery/fluent-plugin-kv-parser/workflows/Testing%20on%20macOS/badge.svg)
+![Testing on Windows](https://github.com/fluent-plugins-nursery/fluent-plugin-kv-parser/workflows/Testing%20on%20Windows/badge.svg)
 
 Fluentd built-in [parser_ltsv](https://docs.fluentd.org/parser/ltsv) has been provided all feature of this plugin since Fluentd v1.1.0.
 
