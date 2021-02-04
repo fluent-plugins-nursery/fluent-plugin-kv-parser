@@ -5,7 +5,9 @@ module Fluent
     class KVParser < Fluent::Plugin::Parser
       Fluent::Plugin.register_parser("kv", self)
 
+      desc 'The delimiter for key-value pairs'
       config_param :kv_delimiter, :string, default: '/\s+/'
+      desc 'The string to split the key from the value'
       config_param :kv_char, :string, default: '='
 
       config_set_default :time_key, "time"
